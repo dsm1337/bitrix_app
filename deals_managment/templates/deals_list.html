@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <table border="1">
+    <tr>
+      <td>
+        <b>TITLE</b>
+      </td>
+      <td>
+        <b>BEGINDATE</b>
+      </td>
+      <td>
+        <b>CLOSEDATE</b>
+      </td>
+      <td>
+        <b>OPPORTUNITY</b>
+      </td>
+      <td>
+        <b>PENALTY</b>
+      </td>
+      <td>
+        <b>INTERNATIONAL DEAL</b>
+      </td>
+    </tr>
+    {% for deal in deals %}
+      <tr>
+        <td>
+          {{ deal.TITLE }}
+        </td>
+        <td>
+          {{ deal.BEGINDATE }}
+        </td>
+        <td>
+          {{ deal.CLOSEDATE }}
+        </td>
+        <td>
+          {{ deal.OPPORTUNITY }}
+        </td>
+        <td>
+          {{ deal.UF_CRM_PENALTY }}
+        </td>
+        <td>
+          {% if deal.UF_CRM_INTERNATIONAL_DEAL %} Да
+          {% else %} Нет
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

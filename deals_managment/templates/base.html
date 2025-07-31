@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+<body>
+  <header>
+    <a href="{% url 'deals:list' %}">Список</a>
+    <a href="{% url 'deals:add' %}">Добавить</a>
+  </header>
+  <main>
+    {% block content %}Ничего нет{% endblock %}
+  </main>
+</body>
