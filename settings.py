@@ -16,10 +16,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     'integration_utils.bitrix24',
     'integration_utils.its_utils.app_gitpull',
     'deals_managment.apps.DealsManagmentConfig',
-    'start'
+    'start',
+
 ]
 
 MIDDLEWARE = [

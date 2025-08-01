@@ -10,14 +10,23 @@ def delete_all(bx_token, deals):
 @main_auth(on_cookies=True)
 def list_deals(request):
     but = request.bitrix_user_token
-    # deal = but.call_api_method('crm.deal.get', {'id': 49})
-    # print(deal['result'].keys())
-    # print(f'Поля: {but.call_list_method('crm.deal.userfield.list')}')
-    deals = but.call_api_method('crm.deal.list', params={'select':['ID', 'TITLE', 'BEGINDATE', 'CLOSEDATE', 'OPPORTUNITY', 'UF_CRM_PENALTY', 'UF_CRM_INTERNATIONAL_DEAL']})
-    # for deal in deals['result']:
-    #     print(deal)
+    fields = ['ID', 'TITLE', 'BEGINDATE', 'CLOSEDATE', 'OPPORTUNITY', 'UF_CRM_PENALTY', 'UF_CRM_INTERNATIONAL_DEAL']
+    deals = but.call_api_method(
+        'crm.deal.list', params={
+            'select': fields
+        }
+    )
+    all_fields = but.call_list_method('crm.deal.fields')
+    field_names = []
+    for name in fields:
+        if 'listLabel' in all_fields[name]:
+            field_names.append(all_fields[name]['listLabel'])
+        else:
+            field_names.append(all_fields[name]['title'])
+    for deal in deals['result']:
+        print(deal)
     # delete_all(but, deals)
-    return render(request, 'deals_list.html', context={'deals': deals['result']})
+    return render(request, 'deals_list.html', context={'deals': deals['result'], 'names': field_names})
 
 @main_auth(on_cookies=True)
 def add_deal(request):
@@ -32,7 +41,7 @@ def add_deal(request):
             'CLOSEDATE': data['close_date'].strftime('%Y-%m-%d'),
             'OPPORTUNITY': data['opportunity'],
             'UF_CRM_PENALTY': data['penalty'],
-            'UF_CRM_INTERNATIONAL_DEAL': 'Y' if data['international_deal'] else 'N',
+            'UF_CRM_INTERNATIONAL_DEAL': 'Y' if data['international_deal']  else 'N',
         }
         res = but.call_api_method('crm.deal.add', params={'fields':fields})
         print(f'Данные: {fields}. Результат : {res}')

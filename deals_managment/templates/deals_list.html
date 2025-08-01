@@ -1,28 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-  <table border="1">
-    <tr>
-      <td>
-        <b>TITLE</b>
-      </td>
-      <td>
-        <b>BEGINDATE</b>
-      </td>
-      <td>
-        <b>CLOSEDATE</b>
-      </td>
-      <td>
-        <b>OPPORTUNITY</b>
-      </td>
-      <td>
-        <b>PENALTY</b>
-      </td>
-      <td>
-        <b>INTERNATIONAL DEAL</b>
-      </td>
-    </tr>
+  <table class="table table-bordered">
+    <thread>
+      <tr>
+        {% for name in names%}
+          <th>
+            {{ name }}
+          </th>
+        {% endfor %}
+      </tr>
+    </thread>
     {% for deal in deals %}
       <tr>
+        <td>
+          {{ deal.ID }}
+        </td>
         <td>
           {{ deal.TITLE }}
         </td>
@@ -39,7 +31,7 @@
           {{ deal.UF_CRM_PENALTY }}
         </td>
         <td>
-          {% if deal.UF_CRM_INTERNATIONAL_DEAL %} Да
+          {% if deal.UF_CRM_INTERNATIONAL_DEAL == '1' %} Да
           {% else %} Нет
           {% endif %}
         </td>

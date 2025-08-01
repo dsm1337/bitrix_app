@@ -1,8 +1,27 @@
 {% extends "base.html" %}
-
+{% load django_bootstrap5 %}
 {% block content %}
   <form>
-    {{ form.as_p }}
-    <input type="submit" value="Add">
+    <div class="col-mb-3">
+      <div class="row md-3">
+        {% bootstrap_field form.title layout='vertical' %}
+      </div>
+      <div class="row md-3">
+        {% bootstrap_field form.begin_date layout='vertical' %}
+      </div>
+      <div class="row md-3">
+        {% bootstrap_field form.close_date layout='vertical' %}
+      </div>
+      <div class="row md-3">
+        {% bootstrap_field form.opportunity layout='vertical' %}
+      </div>
+      <div class="row md-3">
+        {% bootstrap_field form.penalty layout='vertical' %}
+      </div>
+      <div class="row md-3">
+        {% bootstrap_field form.international_deal layout='vertical' %}
+      </div>
+    </div>
+    <input type="submit" value="Добавить">
   </form>
 {% endblock %}

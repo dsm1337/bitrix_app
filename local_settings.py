@@ -19,13 +19,13 @@ APP_SETTINGS = LocalSettingsClass(
     app_domain='127.0.0.1:8000',
     app_name='bitrix_app',
     salt='wefiewofioiI(IF(Eufrew8fju8ewfjhwkefjlewfjlJFKjewubhybfwybgybHBGYBGF',
-    secret_key='wefewfkji4834gudrj.kjh237tgofhfjekewf.kjewkfjeiwfjeiwjfijewf',
+    secret_key='xdH+ypa9VNi3y2RQoFENb7BkFAPWtadRYknzpnv0XGGq4RxXIBxbfo9ABl8=',
     application_bitrix_client_id='local.688369a2aadbc2.95607662',
     application_bitrix_client_secret='9gko35Fk5u3yi3CDiZLs7770i3T1H4YxiLPYnsL640M0daIk1y',
     application_index_path='/',
 )
 
-DOMAIN = "56218ef983f3-8301993767665431593.ngrok-free.app"
+# DOMAIN = "56218ef983f3-8301993767665431593.ngrok-free.app"
 
 
 DATABASES = {
